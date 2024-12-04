@@ -1,0 +1,215 @@
+/* styles.css */
+
+/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #26aff4, #004d80); /* Beautiful gradient background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative; /* Necessary for z-index stacking */
+    overflow: hidden;
+}
+
+/* Main container for game */
+.container {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 480px;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 5; /* Ensures it sits above the background */
+}
+
+/* Section styles */
+.game-section {
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+/* Visible class to trigger opacity transition */
+.game-section.visible {
+    opacity: 1;
+}
+
+/* Input, Select, Button Styles */
+input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 1.2rem;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Button Hover Effect */
+button {
+    background-color: #007bff;
+    color: white;
+    font-size: 1.1rem;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Input/Select Focus Styles */
+input:focus, select:focus {
+    border-color: #00aaff;
+    outline: none;
+}
+
+/* List Styling */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 12px;
+    margin: 8px 0;
+    background: #e6f0ff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+li:hover {
+    background-color: #cce5ff;
+    transform: translateX(10px); /* Hover effect for shifting */
+}
+
+/* Hidden elements */
+.hidden {
+    display: none;
+}
+
+/* Loading overlay with z-index */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Modal for Loading */
+.overlay.visible {
+    opacity: 1;
+    pointer-events: all; /* Allow interaction when visible */
+}
+
+/* Loading spinner/modal content */
+.loading-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    z-index: 15; /* Above overlay */
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+#question-section {
+    animation: slideIn 0.6s ease-out;
+    z-index: 7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        max-width: 350px;
+        padding: 15px;
+    }
+
+    input, select, button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    input, select, button {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    ul li {
+        font-size: 1rem;
+    }
+}
+
+/* Special Styling for Game Sections */
+#player-setup {
+    z-index: 2;
+}
+
+#category-selection {
+    z-index: 3;
+}
+
+#question-section {
+    z-index: 4;
+}
+
+#results-section {
+    z-index: 6;
+}
+
+/* Background with Animation */
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body {
+    animation: moveBackground 10s ease-in-out infinite;
+    background-size: 400% 400%;
+}
